@@ -1,0 +1,18 @@
+.task-creation-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+}
+
+.task-creation-bar-input {
+    background: fixed;
+    border: none;
+}
+
+.task-creation-bar-input:focus {
+    outline: none;
+}
