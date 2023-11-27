@@ -10,14 +10,14 @@ export function TaskItem({ children }) {
 
   return (
     <div className="item">
-      <div className="item-done-check" onClick={handleCheckboxChange}>
+      <div className="item-done-check">
         <input
           type="checkbox"
           id="item-done-check"
           name="item-done-check"
           checked={isChecked}
         />
-        <span></span>
+        <span onClick={handleCheckboxChange}></span>
       </div>
       <label htmlFor="item-done-check" className="item-label">
         {children}
