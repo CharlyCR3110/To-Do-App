@@ -8,8 +8,10 @@ export function TaskItem({ children }) {
     setIsChecked(!isChecked);
   };
 
+  const itemClassNames = isChecked ? 'item item-done' : 'item';
+
   return (
-    <div className="item">
+    <div className={itemClassNames}>
       <div className="item-done-check">
         <input
           type="checkbox"
