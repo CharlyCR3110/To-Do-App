@@ -1,7 +1,7 @@
 import { TaskItem } from './components/TaskItem'
 import { useState } from 'react'
 
-import './App.css'
+import './styles/App.css'
 
 function App() {
 
