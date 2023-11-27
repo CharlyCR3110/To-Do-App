@@ -1,0 +1,38 @@
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+}
+
+.item-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #213547;
+}
+
+/* checkbox to mark the task as done */
+.item-done-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.item-done-check:hover {
+    transform: scale(1.1);
+}
