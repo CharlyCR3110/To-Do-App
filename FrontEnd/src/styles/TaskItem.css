@@ -63,3 +63,9 @@
 .item-done-check input:checked + span::before {
   opacity: 1;
 }
+
+.item-done {
+  background-color: #c0e8d5; /* Cambiar a tu color deseado */
+  opacity: 0.8; /* Ajustar según tu preferencia */
+}
+
