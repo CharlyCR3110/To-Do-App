@@ -4,6 +4,7 @@ import { TaskCreationBar } from "./TaskCreationBar";
 
 export function TaskList() {
   const [tasks, setTasks] = useState([]);
+  const [deletedTasks, setDeletedTasks] = useState([]);
 
   useEffect(() => {
     // Realiza una solicitud para obtener las tareas al cargar el componente
@@ -27,11 +28,32 @@ export function TaskList() {
       .catch((error) => console.error("Error creating task:", error));
   };
 
+  const removeTask = (taskId) => {
+    // Realiza una solicitud para eliminar una tarea
+    fetch(`http://localhost:3000/tasks/${taskId}`, {
+      method: "DELETE",
+    })
+      .then(() => {
+        setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+        setDeletedTasks((prevDeletedTasks) => [
+          ...prevDeletedTasks,
+          taskId,
+        ]);
+      })
+      .catch((error) => console.error("Error deleting task:", error));
+  };
+
   return (
     <div>
       <section className="task-list">
         {tasks.map((task) => (
-          <TaskItem key={task.id} id={task.id}>{task.description}</TaskItem>
+          <TaskItem
+            key={task.id}
+            id={task.id}
+            onTaskDelete={removeTask}
+          >
+            {task.description}
+          </TaskItem>
         ))}
       </section>
       <TaskCreationBar onTaskCreate={addTask} />
