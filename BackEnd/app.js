@@ -34,9 +34,9 @@ app.delete('/tasks/:id', async (req, res) => {
     try {
         const result = await deleteTask(id);
         if (result > 0) {
-            res.status(200).send(`Task with ID ${id} deleted successfully`);
+            res.status(200).send(result);
         } else {
-            res.status(404).send(`Task with ID ${id} not found`);
+            res.status(404).send("Task not found");
         }
     } catch (error) {
         console.error("Error deleting task:", error);
