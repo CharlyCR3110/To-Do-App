@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 
-import { getTasks, getTask, createTask } from './database.js';
+import { getTasks, getTask, createTask, deleteTask } from './database.js';
 
 const app = express();
 
@@ -31,8 +31,17 @@ app.post('/tasks', async (req, res) => {
 // delete one
 app.delete('/tasks/:id', async (req, res) => {
     const id = req.params.id;
-    const result = await deleteTask(id);
-    res.send(result);
+    try {
+        const result = await deleteTask(id);
+        if (result > 0) {
+            res.status(200).send(`Task with ID ${id} deleted successfully`);
+        } else {
+            res.status(404).send(`Task with ID ${id} not found`);
+        }
+    } catch (error) {
+        console.error("Error deleting task:", error);
+        res.status(500).send("Internal Server Error");
+    }
 });
 
 app.use((err, req, res, next) => {
