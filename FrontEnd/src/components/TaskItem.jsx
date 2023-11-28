@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/TaskItem.css';
 
-export function TaskItem({ children, id }) {
+export function TaskItem({ children, id, onTaskDelete }) {
   const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
@@ -9,22 +9,12 @@ export function TaskItem({ children, id }) {
 
     if (isChecked) {
       deleteTimeout = setTimeout(() => {
-        // Lógica para eliminar la tarea de la base de datos
-        console.log(`Tarea ${id} eliminada`);
-        // Realizar la solicitud DELETE al servidor
-        fetch(`http://localhost:3000/tasks/${id}`, {
-          method: 'DELETE',
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log('Tarea eliminada:', data);
-          })
-          .catch((error) => console.error('Error eliminando tarea:', error));
+        onTaskDelete(id);
       }, 10000);
     }
 
     return () => clearTimeout(deleteTimeout);
-  }, [isChecked, id]);
+  }, [isChecked, id, onTaskDelete]);
 
 
   const handleCheckboxChange = () => {
