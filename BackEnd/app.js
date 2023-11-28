@@ -1,9 +1,11 @@
 import express from "express";
+import cors from "cors";
 
 import { getTasks, getTask, createTask } from './database.js';
 
 const app = express();
 
+app.use(cors());       // enable CORS
 app.use(express.json());
 
 // get all
