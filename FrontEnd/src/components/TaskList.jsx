@@ -31,7 +31,7 @@ export function TaskList() {
     <div>
       <section className="task-list">
         {tasks.map((task) => (
-          <TaskItem key={task.id}>{task.description}</TaskItem>
+          <TaskItem key={task.id} id={task.id}>{task.description}</TaskItem>
         ))}
       </section>
       <TaskCreationBar onTaskCreate={addTask} />
